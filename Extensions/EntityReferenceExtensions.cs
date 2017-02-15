@@ -8,7 +8,6 @@ namespace KpdApps.Common.MsCrm2013.Extensions
 	/// </summary>
 	public static class EntityReferenceExtensions
 	{
-
 		/// <summary>
 		/// Convert EntityReference to ActivityParty.
 		/// </summary>

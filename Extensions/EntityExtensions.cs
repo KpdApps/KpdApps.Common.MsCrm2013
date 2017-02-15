@@ -147,7 +147,6 @@ namespace KpdApps.Common.MsCrm2013.Extensions
 			return (Entity)serializer.ReadObject(reader);
 		}
 
-
 		/// <summary>
 		/// Create empty Entity (which inherit only parent logical name and identification field)
 		/// </summary>

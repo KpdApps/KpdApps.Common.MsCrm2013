@@ -35,7 +35,6 @@ namespace KpdApps.Common.MsCrm2013.Extensions
 			return organizationService.Retrieve(entityName, entityId, new ColumnSet(true));
 		}
 
-
 		/// <summary>
 		/// Replace for regular Retrieve, return <see cref="Entity"/> with all collumns.
 		/// </summary>
