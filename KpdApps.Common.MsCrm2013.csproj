@@ -57,6 +57,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CrmOrganizationServiceProxy.cs" />
+    <Compile Include="Extensions\PluginExecutionContextExtensions.cs" />
     <Compile Include="Extensions\OrganizationServiceExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
