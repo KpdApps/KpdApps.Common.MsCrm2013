@@ -85,5 +85,29 @@ namespace KpdApps.Common.MsCrm2013.Extensions
 		{
 			return new SystemServiceSwitcher(service);
 		}
+
+		public static ExecuteWorkflowResponse ExecuteWorkflowWithRetry(this IOrganizationService service, ExecuteWorkflowRequest request, int retryTimes)
+		{
+			var response = new ExecuteWorkflowResponse();
+			int i = 0;
+			while (i < retryTimes)
+			{
+				try
+				{
+					response = (ExecuteWorkflowResponse)service.Execute(request);
+					break;
+				}
+				catch (SqlException)
+				{
+					i++;
+					System.Threading.Thread.Sleep(i * 1000);
+				}
+			}
+
+			if (i >= retryTimes)
+				throw new Exception($"ExecuteWorkflowWithRetry WorkflowId({request.WorkflowId}): исчерпан лимит попыток.");
+
+			return response;
+		}
 	}
 }
