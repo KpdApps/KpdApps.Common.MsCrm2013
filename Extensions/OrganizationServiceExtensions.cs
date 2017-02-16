@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Data.SqlClient;
 using System.Linq;
+using Microsoft.Crm.Sdk.Messages;
 using Microsoft.Xrm.Sdk;
 using Microsoft.Xrm.Sdk.Query;
 
@@ -77,6 +79,11 @@ namespace KpdApps.Common.MsCrm2013.Extensions
 
 			ColumnSet set = new ColumnSet(attrs);
 			return organizationService.Retrieve(entityName, entityId, set);
+		}
+
+		public static SystemServiceSwitcher SwitchToSystem(this IOrganizationService service)
+		{
+			return new SystemServiceSwitcher(service);
 		}
 	}
 }

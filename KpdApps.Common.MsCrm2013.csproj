@@ -62,6 +62,7 @@
     <Compile Include="Extensions\EntityReferenceExtensions.cs" />
     <Compile Include="Extensions\PluginExecutionContextExtensions.cs" />
     <Compile Include="Extensions\OrganizationServiceExtensions.cs" />
+    <Compile Include="Extensions\SystemServiceSwitcher.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
