@@ -52,6 +52,14 @@ namespace KpdApps.Common.MsCrm2013.Extensions
 			return property?.ToString();
 		}
 
+		public static void SetStringValue(this AttributeCollection properties, string name, string value)
+		{
+			if (!properties.Contains(name))
+				properties.Add(name, value);
+			else
+				properties[name] = value;
+		}
+
 		public static int GetStatusValue(this AttributeCollection properties)
 		{
 			return GetPicklistValue(properties, "statuscode");
