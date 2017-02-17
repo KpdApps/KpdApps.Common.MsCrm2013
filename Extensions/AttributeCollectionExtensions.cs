@@ -75,5 +75,18 @@ namespace KpdApps.Common.MsCrm2013.Extensions
 			OptionSetValue property = properties[name] as OptionSetValue;
 			return property?.Value ?? defaultValue;
 		}
+
+		public static void SetPicklistValue(this AttributeCollection properties, string name, int value)
+		{
+			if (!properties.Contains(name))
+				properties.Add(name, new OptionSetValue(value));
+			else
+				properties[name] = new OptionSetValue(value);
+		}
+
+		public static void SetStatusValue(this AttributeCollection properties, string name, int value)
+		{
+			SetPicklistValue(properties, name, value);
+		}
 	}
 }
