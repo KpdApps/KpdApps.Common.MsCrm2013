@@ -57,6 +57,11 @@ namespace KpdApps.Common.MsCrm2013.Extensions
 			return GetPicklistValue(properties, "statuscode");
 		}
 
+		public static int GetStateValue(this AttributeCollection properties)
+		{
+			return GetPicklistValue(properties, "statecode");
+		}
+
 		public static int GetPicklistValue(this AttributeCollection properties, string name)
 		{
 			return GetPicklistValue(properties, name, -1);
