@@ -51,5 +51,24 @@ namespace KpdApps.Common.MsCrm2013.Extensions
 			object property = properties[name];
 			return property?.ToString();
 		}
+
+		public static int GetStatusValue(this AttributeCollection properties)
+		{
+			return GetPicklistValue(properties, "statuscode");
+		}
+
+		public static int GetPicklistValue(this AttributeCollection properties, string name)
+		{
+			return GetPicklistValue(properties, name, -1);
+		}
+
+		public static int GetPicklistValue(this AttributeCollection properties, string name, int defaultValue)
+		{
+			if (!properties.Contains(name))
+				return defaultValue;
+
+			OptionSetValue property = properties[name] as OptionSetValue;
+			return property?.Value ?? defaultValue;
+		}
 	}
 }
