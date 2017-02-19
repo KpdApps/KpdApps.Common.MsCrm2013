@@ -96,5 +96,28 @@ namespace KpdApps.Common.MsCrm2013.Extensions
 		{
 			SetPicklistValue(properties, name, value);
 		}
+
+		public static DateTime GetDateTimeValue(this AttributeCollection properties, string name)
+		{
+			if (!properties.Contains(name))
+				return DateTime.MinValue;
+
+			object property = properties[name];
+			if (property != null)
+				return Convert.ToDateTime(property);
+			return DateTime.MinValue;
+		}
+
+		public static void SetDateTimeValue(this AttributeCollection properties, string name, DateTime value)
+		{
+			if (!properties.Contains(name))
+			{
+				properties.Add(name, value);
+			}
+			else
+			{
+				properties[name] = value;
+			}
+		}
 	}
 }
