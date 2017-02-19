@@ -119,5 +119,41 @@ namespace KpdApps.Common.MsCrm2013.Extensions
 				properties[name] = value;
 			}
 		}
+
+		public static EntityReference GetLookup(this AttributeCollection properties, string name)
+		{
+			if (!properties.Contains(name)) return null;
+
+			var @ref = properties[name];
+			if (@ref != null)
+				return (EntityReference)properties[name];
+
+			return null;
+		}
+
+		public static Guid GetLookupValue(this AttributeCollection properties, string name)
+		{
+			if (!properties.Contains(name))
+				return Guid.Empty;
+
+			object property = properties[name];
+			EntityReference @ref = property as EntityReference;
+			if (@ref != null)
+				return @ref.Id;
+
+			return Guid.Empty;
+		}
+
+		public static void SetLookupValue(this AttributeCollection properties, string name, string type, Guid value)
+		{
+			if (!properties.Contains(name))
+			{
+				properties.Add(name, new EntityReference(type, value));
+			}
+			else
+			{
+				properties[name] = new EntityReference(type, value);
+			}
+		}
 	}
 }
