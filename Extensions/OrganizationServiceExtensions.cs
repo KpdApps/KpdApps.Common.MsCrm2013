@@ -120,6 +120,14 @@ namespace KpdApps.Common.MsCrm2013.Extensions
 			SetStateDynamic(service, entityName, id, 1, 2);
 		}
 
+		/// <summary>
+		/// Execute <see cref="SetStateRequest"/> to set entity state and status codes.
+		/// </summary>
+		/// <param name="service"><see cref="IOrganizationService"/></param>
+		/// <param name="entityName">Logical name of entity.</param>
+		/// <param name="id">Entity identifier.</param>
+		/// <param name="stateCode">State code</param>
+		/// <param name="statusCode">Status code</param>
 		public static void SetStateDynamic(this IOrganizationService service, string entityName, Guid id, int stateCode, int statusCode)
 		{
 			SetStateRequest request = new SetStateRequest
