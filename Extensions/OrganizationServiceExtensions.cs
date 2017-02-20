@@ -109,5 +109,27 @@ namespace KpdApps.Common.MsCrm2013.Extensions
 
 			return response;
 		}
+
+		public static void SetStateActive(this IOrganizationService service, string entityName, Guid id)
+		{
+			SetStateDynamic(service, entityName, id, 0, 1);
+		}
+
+		public static void SetStateInactive(this IOrganizationService service, string entityName, Guid id)
+		{
+			SetStateDynamic(service, entityName, id, 1, 2);
+		}
+
+		public static void SetStateDynamic(this IOrganizationService service, string entityName, Guid id, int stateCode, int statusCode)
+		{
+			SetStateRequest request = new SetStateRequest
+			{
+				EntityMoniker = new EntityReference(entityName, id),
+				State = new OptionSetValue(stateCode),
+				Status = new OptionSetValue(statusCode)
+			};
+
+			service.Execute(request);
+		}
 	}
 }
