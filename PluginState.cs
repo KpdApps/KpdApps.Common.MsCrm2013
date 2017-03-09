@@ -54,5 +54,39 @@ namespace KpdApps.Common.MsCrm2013
 
             return default(T); ;
         }
+
+        public Entity TryGetPostImage(string name)
+        {
+            if (Context.PostEntityImages.Contains(name))
+                return Context.PostEntityImages[name];
+
+            return null;
+        }
+
+        public Entity GetPostImage(string name)
+        {
+            var image = TryGetPostImage(name);
+            if (image == null)
+                throw new ApplicationException($"Post-image with {name} not found.");
+
+            return image;
+        }
+
+        public Entity TryGetPreImage(string name)
+        {
+            if (Context.PreEntityImages.Contains(name))
+                return Context.PreEntityImages[name];
+
+            return null;
+        }
+
+        public Entity GetPreImage(string name)
+        {
+            var image = TryGetPreImage(name);
+            if (image == null)
+                throw new ApplicationException($"Pre-image with name {name} not found.");
+
+            return image;
+        }
     }
 }
