@@ -56,6 +56,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BasePlugin.cs" />
+    <Compile Include="BasePluginAction.cs" />
     <Compile Include="CrmOrganizationServiceProxy.cs" />
     <Compile Include="Extensions\AttributeCollectionExtensions.cs" />
     <Compile Include="Extensions\EntityExtensions.cs" />
@@ -65,6 +67,7 @@
     <Compile Include="Extensions\SystemServiceSwitcher.cs" />
     <Compile Include="Extensions\TracingServiceExtensions.cs" />
     <Compile Include="Helpers\CrmMetadataHelper.cs" />
+    <Compile Include="PluginState.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
